@@ -25,6 +25,8 @@ import UIKit
 //]
 
 var teamSharks = [String: Any]()
+var teamDragons = [String: Any]()
+var teamRaptors = [String: Any]()
 
 var players = ["Joe Smith" : [42, "yes", "Jim and Jan Smith"],
                "Jill Tanner" : [36, "yes", "Clara Tanner"],
@@ -47,8 +49,11 @@ var players = ["Joe Smith" : [42, "yes", "Jim and Jan Smith"],
 ]
 
 for (key, value) in players {
-    print("\(key) \(value)")
+    //print("\(key) \(value)")
+    teamSharks[key] = value
+    print(teamSharks)
 }
+
 
 
 
