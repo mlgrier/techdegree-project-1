@@ -37,6 +37,7 @@ var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
                "Herschel Krustofski" : ["45", "yes", "Hyman and Rachel Krustofski"]
 ]
 
+
 //List of team names and practice dates and times
 
 //var teamsPractice = ["Sharks" : "March 17, 3pm",
