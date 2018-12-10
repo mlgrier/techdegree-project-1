@@ -1,6 +1,8 @@
 import UIKit
+import Foundation
 
-var experincedPlayers = 0
+var countExperincedPlayers = 0
+var expOnEachTeam = 0
 
 // Empty team dicto
 
@@ -30,27 +32,35 @@ var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
                "Herschel Krustofski" : ["45", "yes", "Hyman and Rachel Krustofski"]
 ]
 
+func theExperincedPlayersCount() {
+    for (_, value) in players {
+        if value[1] == "yes" {
+            countExperincedPlayers += 1
+        }
+    }
+    
+    expOnEachTeam = countExperincedPlayers / 3
+}
+
+theExperincedPlayersCount()
+
+
 for (key, value) in players {
     if value[1] == "yes" && players.count == 3 {
         teamSharks.append(key)
-    } else {
+    } else if value[1] == "yes"{
         teamDragons.append(key)
     }
 }
+
 print(teamSharks)
 print(teamDragons)
 players.count
+
 
 //    teamSharks[key] = value[1]
 //    print(teamSharks)
 
 
-func numberOfExperincedPlayers() {
-    for (_, value) in players {
-        if value[0] == "yes" {
-            experincedPlayers = experincedPlayers + 1
-    }
- }
-}
-print(experincedPlayers)
+
 
