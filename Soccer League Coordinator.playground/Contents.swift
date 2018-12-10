@@ -37,6 +37,13 @@ var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
                "Herschel Krustofski" : ["45", "yes", "Hyman and Rachel Krustofski"]
 ]
 
+//List of team names and practice dates and times
+
+var teamsPractice = ["Sharks" : "March 17, 3pm",
+                     "Dragons" : "March 17, 1pm",
+                     "Raptors" : "March 18, 1pm"
+]
+
 func theExperincedPlayersCount() {
     for (_, value) in players {
         if value[1] == "yes" {
@@ -57,21 +64,33 @@ func theExperincedPlayersCount() {
 
 func pickTeamsExpPlayers() {
     for (key, value) in players {
+        
         let parentName = value[2]
         let childName = key
+        var teamName = ""
+        var firstPractice = ""
+        
         if value[1] == "yes" && teamSharks.count < expOnEachTeam {
+            teamName = "Sharks"
+            firstPractice = "March 17, 3pm"
             teamSharks.append(key)
-            letter(parentName: parentName, childName: childName)
+            letter(parentName, childName, teamName, firstPractice)
         } else if value[1] == "yes" && teamDragons.count < expOnEachTeam {
+            teamName = "Dragons"
+            firstPractice = "March 17, 1pm"
             teamDragons.append(key)
+            letter(parentName, childName, teamName, firstPractice)
         } else if value[1] == "yes" && teamRaptors.count < expOnEachTeam {
+            teamName = "Raptors"
+            firstPractice = "March 18, 1pm"
             teamRaptors.append(key)
+            letter(parentName, childName, teamName, firstPractice)
         }
     }
 }
 
-func letter(parentName: String, childName: String) {
-    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the Sharks. \r\n The first team practice will be March 17, 3pm.")
+func letter(_ parentName: String, _ childName: String, _ teamName: String, _ firstPractice: String) {
+    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). \r\n The first team practice will be \(firstPractice).")
 }
 
 
