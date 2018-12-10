@@ -1,21 +1,27 @@
 import UIKit
 import Foundation
 
+// var to separate the experienced players from unexp players and count them
+
 var countExperincedPlayers = 0
 var countUnexperincedPlayers = 0
 var expOnEachTeam = 0
 var unExpOnEachTeam = 0
-var eachTeamTotal = 0
+var eachTeamTotalPlayers = 0
 
-// Empty team dicto
+// players stored in collection names teamSharks - teamDragons - teamRaptors
 
 var teamSharks: [String] = []
 var teamDragons: [String] = []
 var teamRaptors: [String] = []
 
+var totalNumberOfTeams = 3
+
+// Array for parent letters
+
 var parentLetters: [String] = []
 
-// List of all the players
+// make a single collection named "PLAYERS" with all info for players
 
 var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
                "Jill Tanner" : ["36", "yes", "Clara Tanner"],
@@ -37,13 +43,7 @@ var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
                "Herschel Krustofski" : ["45", "yes", "Hyman and Rachel Krustofski"]
 ]
 
-
-//List of team names and practice dates and times
-
-//var teamsPractice = ["Sharks" : "March 17, 3pm",
-//                     "Dragons" : "March 17, 1pm",
-//                     "Raptors" : "March 18, 1pm"
-//]
+// func to get a count of exp players and unexp players
 
 func theExperincedPlayersCount() {
     for (_, value) in players {
@@ -54,21 +54,15 @@ func theExperincedPlayersCount() {
         }
     }
     
-    expOnEachTeam = countExperincedPlayers / 3
-    unExpOnEachTeam = countUnexperincedPlayers / 3
+    expOnEachTeam = countExperincedPlayers / totalNumberOfTeams
+    unExpOnEachTeam = countUnexperincedPlayers / totalNumberOfTeams
     
-    eachTeamTotal = expOnEachTeam + unExpOnEachTeam
+    eachTeamTotalPlayers = expOnEachTeam + unExpOnEachTeam
     
     
 }
 
-//func teamPractice() {
-//    for (key, value) in teamsPractice {
-//        let teamName = key
-//        var firstPractice = value
-//    }
-//}
-
+// func to separate the experienced players and put them on a team
 
 func pickTeamsExpPlayers() {
     for (key, value) in players {
@@ -76,33 +70,32 @@ func pickTeamsExpPlayers() {
         let parentName = value[2]
         let childName = key
         var teamName = ""
-        var firstPractice = ""
         
         if value[1] == "yes" && teamSharks.count < expOnEachTeam {
             teamName = "Sharks"
-            firstPractice = "March 17, 3pm"
             teamSharks.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
             
         } else if value[1] == "yes" && teamDragons.count < expOnEachTeam {
             teamName = "Dragons"
-            firstPractice = "March 17, 1pm"
             teamDragons.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
             
         } else if value[1] == "yes" && teamRaptors.count < expOnEachTeam {
             teamName = "Raptors"
-            firstPractice = "March 18, 1pm"
             teamRaptors.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
+            
         }
     }
+    
 }
 
-func letter(_ parentName: String, _ childName: String, _ teamName: String, _ firstPractice: String) {
-    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be \(firstPractice).")
-}
 
+// func to separate the unexperienced players and put them on a team
 
 func pickTeamsUnexpPlayer() {
     for (key, value) in players {
@@ -110,42 +103,49 @@ func pickTeamsUnexpPlayer() {
         let parentName = value[2]
         let childName = key
         var teamName = ""
-        var firstPractice = ""
         
-        if value[1] == "no" && teamSharks.count < eachTeamTotal {
+        if value[1] == "no" && teamSharks.count < eachTeamTotalPlayers {
             teamName = "Sharks"
-            firstPractice = "March 17, 3pm"
             teamSharks.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
             
-        } else if value[1] == "no" && teamDragons.count < eachTeamTotal {
+        } else if value[1] == "no" && teamDragons.count < eachTeamTotalPlayers {
             teamName = "Dragons"
-            firstPractice = "March 17, 1pm"
             teamDragons.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
             
-        } else if value[1] == "no" && teamRaptors.count < eachTeamTotal {
+        } else if value[1] == "no" && teamRaptors.count < eachTeamTotalPlayers {
             teamName = "Raptors"
-            firstPractice = "March 18, 1pm"
             teamRaptors.append(key)
-            letter(parentName, childName, teamName, firstPractice)
+            players.removeValue(forKey: key)
+            letter(parentName, childName, teamName)
         }
     }
 }
 
-// user switch statement for the letter
+//Team parent letters func
 
-//func parentLetter() {
-//    for (key, value) in players {
-//        parentLetters.append("\()")
-//    }
-//}
+func letter(_ parentName: String, _ childName: String, _ teamName: String) {
+    switch teamName {
+    case "Raptors": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 18, 1pm.")
+    case "Sharks": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 3pm.")
+    case "Dragons": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 1pm.")
+    default:
+        print("We don't have a team for your child at this time.")
+    }
+}
+
+
 
 theExperincedPlayersCount()
 pickTeamsExpPlayers()
 pickTeamsUnexpPlayer()
 
-print(parentLetters.count)
+print(parentLetters)
+
+
 
 
 
