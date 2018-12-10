@@ -39,10 +39,10 @@ var players = ["Joe Smith" : ["42", "yes", "Jim and Jan Smith"],
 
 //List of team names and practice dates and times
 
-var teamsPractice = ["Sharks" : "March 17, 3pm",
-                     "Dragons" : "March 17, 1pm",
-                     "Raptors" : "March 18, 1pm"
-]
+//var teamsPractice = ["Sharks" : "March 17, 3pm",
+//                     "Dragons" : "March 17, 1pm",
+//                     "Raptors" : "March 18, 1pm"
+//]
 
 func theExperincedPlayersCount() {
     for (_, value) in players {
@@ -61,12 +61,12 @@ func theExperincedPlayersCount() {
     
 }
 
-func teamPractice() {
-    for (key, value) in teamsPractice {
-        let teamName = key
-        var firstPractice = value
-    }
-}
+//func teamPractice() {
+//    for (key, value) in teamsPractice {
+//        let teamName = key
+//        var firstPractice = value
+//    }
+//}
 
 
 func pickTeamsExpPlayers() {
@@ -82,11 +82,13 @@ func pickTeamsExpPlayers() {
             firstPractice = "March 17, 3pm"
             teamSharks.append(key)
             letter(parentName, childName, teamName, firstPractice)
+            
         } else if value[1] == "yes" && teamDragons.count < expOnEachTeam {
             teamName = "Dragons"
             firstPractice = "March 17, 1pm"
             teamDragons.append(key)
             letter(parentName, childName, teamName, firstPractice)
+            
         } else if value[1] == "yes" && teamRaptors.count < expOnEachTeam {
             teamName = "Raptors"
             firstPractice = "March 18, 1pm"
@@ -103,12 +105,29 @@ func letter(_ parentName: String, _ childName: String, _ teamName: String, _ fir
 
 func pickTeamsUnexpPlayer() {
     for (key, value) in players {
+        
+        let parentName = value[2]
+        let childName = key
+        var teamName = ""
+        var firstPractice = ""
+        
         if value[1] == "no" && teamSharks.count < eachTeamTotal {
+            teamName = "Sharks"
+            firstPractice = "March 17, 3pm"
             teamSharks.append(key)
+            letter(parentName, childName, teamName, firstPractice)
+            
         } else if value[1] == "no" && teamDragons.count < eachTeamTotal {
+            teamName = "Dragons"
+            firstPractice = "March 17, 1pm"
             teamDragons.append(key)
+            letter(parentName, childName, teamName, firstPractice)
+            
         } else if value[1] == "no" && teamRaptors.count < eachTeamTotal {
+            teamName = "Raptors"
+            firstPractice = "March 18, 1pm"
             teamRaptors.append(key)
+            letter(parentName, childName, teamName, firstPractice)
         }
     }
 }
@@ -125,7 +144,7 @@ theExperincedPlayersCount()
 pickTeamsExpPlayers()
 pickTeamsUnexpPlayer()
 
-print(parentLetters)
+print(parentLetters.count)
 
 
 
