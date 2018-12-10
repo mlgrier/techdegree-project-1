@@ -58,8 +58,6 @@ func theExperincedPlayersCount() {
     unExpOnEachTeam = countUnexperincedPlayers / totalNumberOfTeams
     
     eachTeamTotalPlayers = expOnEachTeam + unExpOnEachTeam
-    
-    
 }
 
 // func to separate the experienced players and put them on a team
