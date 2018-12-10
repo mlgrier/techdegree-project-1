@@ -61,6 +61,13 @@ func theExperincedPlayersCount() {
     
 }
 
+func teamPractice() {
+    for (key, value) in teamsPractice {
+        let teamName = key
+        var firstPractice = value
+    }
+}
+
 
 func pickTeamsExpPlayers() {
     for (key, value) in players {
@@ -90,7 +97,7 @@ func pickTeamsExpPlayers() {
 }
 
 func letter(_ parentName: String, _ childName: String, _ teamName: String, _ firstPractice: String) {
-    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). \r\n The first team practice will be \(firstPractice).")
+    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be \(firstPractice).")
 }
 
 
