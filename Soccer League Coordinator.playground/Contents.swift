@@ -129,14 +129,13 @@ func pickTeamsUnexpPlayer() {
 
 func letter(_ parentName: String, _ childName: String, _ teamName: String) {
     switch teamName {
-    case "Raptors": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 18, 1pm.")
-    case "Sharks": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 3pm.")
-    case "Dragons": print("\nHello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 1pm.")
+    case "Raptors": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 18, 1pm.\n")
+    case "Sharks": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 3pm.\n")
+    case "Dragons": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 1pm.\n")
     default:
         print("We don't have a team for your child at this time.")
     }
 }
-
 
 
 theExperincedPlayersCount()
