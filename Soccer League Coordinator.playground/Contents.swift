@@ -2,13 +2,18 @@ import UIKit
 import Foundation
 
 var countExperincedPlayers = 0
+var countUnexperincedPlayers = 0
 var expOnEachTeam = 0
+var unExpOnEachTeam = 0
+var eachTeamTotal = 0
 
 // Empty team dicto
 
 var teamSharks: [String] = []
 var teamDragons: [String] = []
 var teamRaptors: [String] = []
+
+var parentLetters: [String] = []
 
 // List of all the players
 
@@ -36,30 +41,63 @@ func theExperincedPlayersCount() {
     for (_, value) in players {
         if value[1] == "yes" {
             countExperincedPlayers += 1
+        } else {
+            countUnexperincedPlayers += 1
         }
     }
     
     expOnEachTeam = countExperincedPlayers / 3
+    unExpOnEachTeam = countUnexperincedPlayers / 3
+    
+    eachTeamTotal = expOnEachTeam + unExpOnEachTeam
+    
+    
 }
 
-theExperincedPlayersCount()
 
-
-for (key, value) in players {
-    if value[1] == "yes" && players.count == 3 {
-        teamSharks.append(key)
-    } else if value[1] == "yes"{
-        teamDragons.append(key)
+func pickTeamsExpPlayers() {
+    for (key, value) in players {
+        if value[1] == "yes" && teamSharks.count < expOnEachTeam {
+            teamSharks.append(key)
+        } else if value[1] == "yes" && teamDragons.count < expOnEachTeam {
+            teamDragons.append(key)
+        } else if value[1] == "yes" && teamRaptors.count < expOnEachTeam {
+            teamRaptors.append(key)
+        }
     }
 }
 
+
+func pickTeamsUnexpPlayer() {
+    for (key, value) in players {
+        if value[1] == "no" && teamSharks.count < eachTeamTotal {
+            teamSharks.append(key)
+        } else if value[1] == "no" && teamDragons.count < eachTeamTotal {
+            teamDragons.append(key)
+        } else if value[1] == "no" && teamRaptors.count < eachTeamTotal {
+            teamRaptors.append(key)
+        }
+    }
+}
+
+func parentLetter() {
+    for (key, value) in players {
+        parentLetters.append("\()")
+    }
+}
+
+theExperincedPlayersCount()
+pickTeamsExpPlayers()
+pickTeamsUnexpPlayer()
+
+
+print(teamSharks.count)
+print(teamDragons.count)
+print(teamRaptors.count)
 print(teamSharks)
+print(teamRaptors)
 print(teamDragons)
-players.count
 
-
-//    teamSharks[key] = value[1]
-//    print(teamSharks)
 
 
 
