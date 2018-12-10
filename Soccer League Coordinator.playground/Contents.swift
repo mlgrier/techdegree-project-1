@@ -57,14 +57,21 @@ func theExperincedPlayersCount() {
 
 func pickTeamsExpPlayers() {
     for (key, value) in players {
+        let parentName = value[2]
+        let childName = key
         if value[1] == "yes" && teamSharks.count < expOnEachTeam {
             teamSharks.append(key)
+            letter(parentName: parentName, childName: childName)
         } else if value[1] == "yes" && teamDragons.count < expOnEachTeam {
             teamDragons.append(key)
         } else if value[1] == "yes" && teamRaptors.count < expOnEachTeam {
             teamRaptors.append(key)
         }
     }
+}
+
+func letter(parentName: String, childName: String) {
+    parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the Sharks. \r\n The first team practice will be March 17, 3pm.")
 }
 
 
@@ -80,23 +87,19 @@ func pickTeamsUnexpPlayer() {
     }
 }
 
-func parentLetter() {
-    for (key, value) in players {
-        parentLetters.append("\()")
-    }
-}
+// user switch statement for the letter
+
+//func parentLetter() {
+//    for (key, value) in players {
+//        parentLetters.append("\()")
+//    }
+//}
 
 theExperincedPlayersCount()
 pickTeamsExpPlayers()
 pickTeamsUnexpPlayer()
 
-
-print(teamSharks.count)
-print(teamDragons.count)
-print(teamRaptors.count)
-print(teamSharks)
-print(teamRaptors)
-print(teamDragons)
+print(parentLetters)
 
 
 
