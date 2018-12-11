@@ -123,15 +123,25 @@ func pickTeamsUnexpPlayer() {
     }
 }
 
-//Team parent letters func
+// Func to build and add letters to parentLetters
 
 func letter(_ parentName: String, _ childName: String, _ teamName: String) {
+    
     switch teamName {
-    case "Raptors": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 18, 1pm.\n")
-    case "Sharks": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 3pm.\n")
-    case "Dragons": print("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 1pm.\n")
+    case "Raptors": parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 18, 1pm.\n")
+    case "Sharks": parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 3pm.\n")
+    case "Dragons": parentLetters.append("Hello \(parentName) your child \(childName) is now a part of the best team the \(teamName). The first team practice will be March 17, 1pm.\n")
     default:
         print("We don't have a team for your child at this time.")
+    }
+
+}
+
+// Func to print parent letters
+
+func printLetters() {
+    for letter in parentLetters {
+        print(letter)
     }
 }
 
@@ -139,8 +149,7 @@ func letter(_ parentName: String, _ childName: String, _ teamName: String) {
 theExperincedPlayersCount()
 pickTeamsExpPlayers()
 pickTeamsUnexpPlayer()
-
-print(parentLetters)
+printLetters()
 
 
 
