@@ -14,7 +14,7 @@ var eachTeamTotalPlayers = 0
 var teamSharks: [String] = []
 var teamDragons: [String] = []
 var teamRaptors: [String] = []
-
+// If teams are added update the number below
 var totalNumberOfTeams = 3
 
 // Array for parent letters
@@ -95,7 +95,7 @@ func pickTeamsExpPlayers() {
 
 // func to separate the unexperienced players and put them on a team
 
-func pickTeamsUnexpPlayer() {
+func pickTeamsUnexpPlayers() {
     for (key, value) in players {
         
         let parentName = value[2]
@@ -148,7 +148,7 @@ func printLetters() {
 
 theExperincedPlayersCount()
 pickTeamsExpPlayers()
-pickTeamsUnexpPlayer()
+pickTeamsUnexpPlayers()
 printLetters()
 
 
