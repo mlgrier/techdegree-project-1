@@ -4,9 +4,9 @@ import Foundation
 // var to separate the experienced players from unexp players and count them
 
 var countExperincedPlayers = 0
-var countUnexperincedPlayers = 0
-var expOnEachTeam = 0
-var unExpOnEachTeam = 0
+var countInexperincedPlayers = 0
+var experincedOnEachTeam = 0
+var inexperincedOnEachTeam = 0
 var eachTeamTotalPlayers = 0
 
 // If teams are added update the number below
@@ -81,20 +81,20 @@ func theExperincedPlayersCount() {
         if experience == "true" {
             countExperincedPlayers += 1
         } else {
-            countUnexperincedPlayers += 1
+            countInexperincedPlayers += 1
         }
     }
     
-    expOnEachTeam = countExperincedPlayers / totalNumberOfTeams
-    unExpOnEachTeam = countUnexperincedPlayers / totalNumberOfTeams
+    experincedOnEachTeam = countExperincedPlayers / totalNumberOfTeams
+    inexperincedOnEachTeam = countInexperincedPlayers / totalNumberOfTeams
     
-    eachTeamTotalPlayers = expOnEachTeam + unExpOnEachTeam
+    eachTeamTotalPlayers = experincedOnEachTeam + inexperincedOnEachTeam
 }
 
 // func to separate the experienced players and put them on a team
 
 
-func pickTeamsExpPlayers() {
+func pickTeamsExperincedPlayers() {
     for (key, value) in players {
         
         let guardians = value["guardians"] ?? "error"
@@ -102,19 +102,20 @@ func pickTeamsExpPlayers() {
         let childName = key
         var teamName = ""
         
-        if experience == "true" && teamSharks.count < expOnEachTeam {
+        
+        if experience == "true" && teamSharks.count < experincedOnEachTeam {
             teamName = "Sharks"
             teamSharks.append(key)
             players.removeValue(forKey: key)
             letter(guardians, childName, teamName)
             
-        } else if experience == "true" && teamDragons.count < expOnEachTeam {
+        } else if experience == "true" && teamDragons.count < experincedOnEachTeam {
             teamName = "Dragons"
             teamDragons.append(key)
             players.removeValue(forKey: key)
             letter(guardians, childName, teamName)
             
-        } else if experience == "true" && teamRaptors.count < expOnEachTeam {
+        } else if experience == "true" && teamRaptors.count < experincedOnEachTeam {
             teamName = "Raptors"
             teamRaptors.append(key)
             players.removeValue(forKey: key)
@@ -127,7 +128,7 @@ func pickTeamsExpPlayers() {
 
 // func to separate the unexperienced players and put them on a team
 
-func pickTeamsUnexpPlayers() {
+func pickTeamsInexperiencedPlayers() {
     for (key, value) in players {
         
         let guardians = value["guardians"] ?? "error"
@@ -168,8 +169,8 @@ func printLetters() {
 
 
 theExperincedPlayersCount()
-pickTeamsExpPlayers()
-pickTeamsUnexpPlayers()
+pickTeamsExperincedPlayers()
+pickTeamsInexperiencedPlayers()
 printLetters()
 
 
